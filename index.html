@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Social Media</title>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+/* BACKGROUND */
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* GLASS BOX */
+.glass{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-radius:25px;
+  padding:35px;
+  width:90%;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+
+/* SCREENS */
+.screen{display:none;}
+.active{display:block;}
+
+/* LOADING */
+.progress{
+  height:10px;
+  background:rgba(255,255,255,.2);
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:25px;
+}
+.progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#00ffcc;
+  transition:.3s;
+}
+#percent{margin-top:15px;font-weight:600;}
+
+/* BUTTON */
+.btn{
+  margin-top:25px;
+  padding:12px 20px;
+  border-radius:30px;
+  background:#00ffcc;
+  color:#000;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.05);}
+
+/* SOCIAL GRID */
+.socials{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:25px;
+}
+
+.socials a{
+  height:70px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  color:#fff;
+  transition:.3s;
+}
+.socials a:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+/* COLORS */
+.wa{background:#25D366;}
+.fb{background:#1877F2;}
+.ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.tg{background:#229ED9;}
+.tt{background:#000;}
+.yt{background:#FF0000;}
+.x{background:#000;}
+.mail{background:#6c757d;}
+
+/* RESPONSIVE */
+@media(max-width:380px){
+  .socials{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="glass screen active" id="loading">
+  <h2>Loading...</h2>
+  <div class="progress"><span id="bar"></span></div>
+  <div id="percent">0%</div>
+</div>
+
+<!-- WELCOME SCREEN -->
+<div class="glass screen" id="welcome">
+  <h2>Welcome ✨</h2>
+  <p style="margin-top:15px;">
+    Welcome to my social media hub.<br>
+    Click below to see all my links 🌐
+  </p>
+  <a class="btn" onclick="goHome()">See My Social Media</a>
+</div>
+
+<!-- HOME SCREEN -->
+<div class="glass screen" id="home">
+  <h2>Connect With Me 💕</h2>
+  <p style="margin-top:10px;">
+    Join me on my social platforms
+  </p>
+
+  <div class="socials">
+    <a class="wa" href="https://wa.me/25261XXXXXXX"><i class="fab fa-whatsapp"></i></a>
+    <a class="fb" href="https://facebook.com/USERNAME"><i class="fab fa-facebook-f"></i></a>
+    <a class="ig" href="https://instagram.com/USERNAME"><i class="fab fa-instagram"></i></a>
+    <a class="tg" href="https://t.me/USERNAME"><i class="fab fa-telegram"></i></a>
+    <a class="tt" href="#"><i class="fab fa-tiktok"></i></a>
+    <a class="yt" href="#"><i class="fab fa-youtube"></i></a>
+    <a class="x" href="#"><i class="fab fa-x-twitter"></i></a>
+    <a class="mail" href="mailto:example@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</div>
+
+<script>
+let count=0;
+let bar=document.getElementById("bar");
+let percent=document.getElementById("percent");
+
+let load=setInterval(()=>{
+  count++;
+  bar.style.width=count+"%";
+  percent.innerText=count+"%";
+  if(count>=100){
+    clearInterval(load);
+    setTimeout(()=>{
+      show("welcome");
+    },400);
+  }
+},30);
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function goHome(){
+  show("home");
+}
+</script>
+
+</body>
+</html>
