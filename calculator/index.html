@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Calculator</title>
+  <link rel="stylesheet" href="calculator.css"> 
+</head>
+<body>
+  <div class="calculator">
+    <!-- Clock Display -->
+    <div class="clock" id="clock"></div>
+
+    <!-- Top Controls -->
+    <div class="top-controls">
+      <button id="normalBtn" class="active">Normal</button>
+      <button id="syntheticBtn">Synthetic</button>
+      <button id="historyBtn">History</button>
+      <button id="unitConvertBtn">Unit Convert</button>
+    </div>
+
+    <!-- Unit Convert Panel -->
+    <div id="unit-convert-panel" style="display: none;">
+      <h3>Unit Convert</h3>
+      <select id="convert-type">
+        <option value="length">Length (km ↔ m)</option>
+        <option value="weight">Weight (kg ↔ g)</option>
+        <option value="temp">Temperature (°C ↔ °F)</option>
+      </select>
+
+      <div class="convert-fields">
+        <input type="number" id="convert-input" placeholder="Enter value" />
+        <select id="from-unit"></select>
+        <select id="to-unit"></select>
+        <button id="convert-btn">Convert</button>
+      </div>
+      <div id="convert-result"></div>
+    </div>
+
+    <!-- Display -->
+    <div class="display">
+      <div id="expression">0</div>
+      <div id="result"></div>
+    </div>
+
+    <!-- Normal Mode -->
+    <div id="normal-mode" class="keys">
+      <button>C</button>
+      <button>(</button>
+      <button>)</button>
+      <button>/</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>*</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>-</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>+</button>
+      <button>0</button>
+      <button>.</button>
+      <button>%</button>
+      <button>=</button>
+    </div>
+
+    <!-- Synthetic Mode -->
+    <div id="synthetic-mode" class="keys" style="display: none;">
+      <button>C</button>
+      <button>(</button>
+      <button>)</button>
+      <button>/</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>*</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>-</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>+</button>
+      <button>0</button>
+      <button>.</button>
+      <button>^</button>
+      <button>=</button>
+      <button>x²</button>
+      <button>√</button>
+    </div>
+
+    <!-- History Mode -->
+    <div id="history-mode" style="display: none;">
+      <h3>History</h3>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
